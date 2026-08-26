@@ -1,5 +1,6 @@
 import "./App.css";
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
+import video from "./assets/video.mp4";
 
 function App() {
   // Definir el estado para almacenar el resultado de la Suma
@@ -17,8 +18,17 @@ function App() {
     setResultado(result);
   };
 
+  const videoRef = useRef(null);
+  const videoPlay = () => {
+    videoRef.current.play();
+  };
+  const videoPause = () => {
+    videoRef.current.pause();
+  };
+
   return (
     <div>
+      {/* useState*/}
       <button
         onClick={botonPulsado}
         style={{ marginTop: "10px", marginLeft: "10px" }}
@@ -27,6 +37,15 @@ function App() {
       </button>
       <div>{elemento}</div>
       <div>{resultado != null && <h2>El resultado es: {resultado}</h2>}</div>
+
+      {/*useRef*/}
+      <video ref={videoRef} width="400">
+        <source src={video} type="video/mp4"></source>
+      </video>
+      <div>
+        <button onClick={videoPlay}>Play</button>
+        <button onClick={videoPause}>Pause</button>
+      </div>
     </div>
   );
 }
