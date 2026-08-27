@@ -8,9 +8,7 @@ const Contador = () => {
   };
 
   const disminuir = () => {
-    if (cuenta > 0) {
-      setCuenta(cuenta - 1);
-    }
+    setCuenta(cuenta - 1);
   };
 
   return (
